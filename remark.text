@@ -2,3 +2,17 @@ This remark is made about to let the test fail, because it is too long,Client
 ValidRemark,Client
 Valid!,Optometrist
 ValidRemark,Client
+Valid!,Optometrist
+ValidRemark,Client
+Too short,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+Too short,Client
+Too short,Client
+This remark is way too long for the test case because it exceeds twenty words limit, so it should fail,Client
+This is a completely valid remark text,Client

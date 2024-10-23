@@ -2,41 +2,64 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class PrescriptionTest {
+
     Prescription prescription = new Prescription();
 
-    // Testing for valid comments and categories
+    // ================== Testing addPrescription ==================
+
+    // Testing for a valid prescription
     @Test
-    public void testAddRemarkValid() {
-        assertTrue(prescription.addRemark("ValidRemark", "Client"));
+    public void testAddPrescriptionValid() {
+        assertTrue(prescription.addPrescription("Arafat", "Abduwali", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -2.5f, 1.0f, 90, "12/12/2023", "Dr. Sarah Lee"));
     }
 
-    // Testing for invalid categories
+    // Testing for short first name
     @Test
-    public void testAddRemarkInvalidCategory() {
-        assertFalse(prescription.addRemark("valid remark", "InvalidCategory"));
+    public void testAddPrescriptionShortFirstName() {
+        assertFalse(prescription.addPrescription("Ara", "Abduwali", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -2.5f, 1.0f, 90, "12/12/2023", "Dr. Sarah Lee"));
     }
 
-    // Testing for short remarkText
+    // Testing for long last name
     @Test
-    public void testAddRemarkShortText() {
-        assertFalse(prescription.addRemark("Hi", "Client"));
+    public void testAddPrescriptionLongLastName() {
+        assertFalse(prescription.addPrescription("Arafat", "Abduwalilongnametoolong", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -2.5f, 1.0f, 90, "12/12/2023", "Dr. Sarah Lee"));
     }
 
-    // Testing for long remarkText
+    // Testing for address too short
     @Test
-    public void testAddRemarkLongText() {
-        assertFalse(prescription.addRemark("This remark is made about to let the test fail, because it is too long", "Client"));
+    public void testAddPrescriptionShortAddress() {
+        assertFalse(prescription.addPrescription("Arafat", "Abduwali", "Short Address",
+                -2.5f, 1.0f, 90, "12/12/2023", "Dr. Sarah Lee"));
     }
 
-    // Testing for the remark start with lowercase letters
+    // Testing for out-of-range sphere
     @Test
-    public void testAddRemarkLowercaseStart() {
-        assertFalse(prescription.addRemark("lowercaseStart", "Client"));
+    public void testAddPrescriptionInvalidSphere() {
+        assertFalse(prescription.addPrescription("Arafat", "Abduwali", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -25.0f, 1.0f, 90, "12/12/2023", "Dr. Sarah Lee"));
     }
 
-    // Testing fot the remark meets the minimum length requirement
+    // Testing for out-of-range cylinder
     @Test
-    public void testAddRemarkMinimumLength() {
-        assertTrue(prescription.addRemark("Valid!", "Optometrist"));
+    public void testAddPrescriptionInvalidCylinder() {
+        assertFalse(prescription.addPrescription("Arafat", "Abduwali", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -2.5f, 5.0f, 90, "12/12/2023", "Dr. Sarah Lee"));
+    }
+
+    // Testing for out-of-range axis
+    @Test
+    public void testAddPrescriptionInvalidAxis() {
+        assertFalse(prescription.addPrescription("Arafat", "Abduwali", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -2.5f, 1.0f, 190, "12/12/2023", "Dr. Sarah Lee"));
+    }
+
+    // Testing for optometrist name too short
+    @Test
+    public void testAddPrescriptionShortOptometristName() {
+        assertFalse(prescription.addPrescription("Arafat", "Abduwali", "138 Spencer Street, Melbourne, VIC 3000, Australia",
+                -2.5f, 1.0f, 90, "12/12/2023", "Dr. S"));
     }
 }
